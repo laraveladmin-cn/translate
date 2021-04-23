@@ -1,5 +1,5 @@
 {
-    "name": "shaozeming/translate",
+    "name": "laraveladmin/translate-tool",
     "description": "一个集成百度翻译，有道翻译，Google 翻译的PHP composer package",
     "require": {
         "guzzlehttp/guzzle": ">=6.3",
