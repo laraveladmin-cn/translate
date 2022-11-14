@@ -94,7 +94,8 @@ class Baidu implements TranslateInterface
     {
 
         if (!isset(self::$language[$language])) {
-            throw new TranslateException('10000');
+            return $language;
+            //throw new TranslateException('10000');
         }
 
         return self::$language[$language];
