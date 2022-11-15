@@ -94,7 +94,8 @@ class YouDao implements TranslateInterface
     {
 
         if (!isset(self::$language[$language])) {
-            throw new TranslateException('10000');
+            return $language;
+            //throw new TranslateException('10000');
         }
 
         return self::$language[$language];
@@ -121,7 +122,7 @@ class YouDao implements TranslateInterface
             if($this->source){
                 return $result;
             }
-           return  $result['translation'];
+            return  is_array($result['translation'])?$result['translation'][0]:$result['translation'];
         }
         throw new TranslateException(10003);
     }

@@ -3,7 +3,7 @@ namespace ShaoZeMing\Translate;
 
 use GuzzleHttp\Client;
 use ShaoZeMing\Translate\Exceptions\TranslateException;
-use Stichoza\GoogleTranslate\TranslateClient;
+use Stichoza\GoogleTranslate\GoogleTranslate as TranslateClient;
 
 class Google implements TranslateInterface
 {
@@ -54,8 +54,8 @@ class Google implements TranslateInterface
      */
     public function translate($string,$source=false)
     {
-        $driver = new TranslateClient( $this->from,  $this->to,$this->options);
-        $driver->setUrlBase($this->base_url);
+        $driver = new TranslateClient($this->to,$this->from,$this->options);
+        $driver->setUrl($this->base_url);
         if($source){
            $result= $driver->getResponse($string);
         }else{
@@ -79,7 +79,8 @@ class Google implements TranslateInterface
     {
 
         if (!isset(self::$language[$language])) {
-            throw new TranslateException('10000');
+            return $language;
+            //throw new TranslateException('10000');
         }
 
         return self::$language[$language];
